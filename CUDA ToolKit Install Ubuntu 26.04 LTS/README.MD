@@ -25,7 +25,7 @@ Setting up deep learning environment frameworks, GPU acceleration, or high-perfo
 
 ---
 
-## Table of Contents
+## 📋 Table of Contents
 1. [Prerequisites](#prerequisites)
 2. [Step 1: System Preparation & Update](#step-1-system-preparation--update)
 3. [Step 2: Add NVIDIA CUDA Repository & Pinning](#step-2-add-nvidia-cuda-repository--pinning)
@@ -38,7 +38,7 @@ Setting up deep learning environment frameworks, GPU acceleration, or high-perfo
 
 ---
 
-## Prerequisites
+## 🛠️ Prerequisites
 
 Before proceeding, ensure that:
 * You have an **NVIDIA GPU** installed in your machine.
@@ -187,6 +187,49 @@ nvidia-smi
 
 ---
 
-## Conclusion
+## ❓ Troubleshooting & Common Issues
+
+### Issue 1: `command not found: nvcc`
+* **Cause:** The `PATH` environment variable is not updated or current shell session was not reloaded.
+* **Fix:** Run `source ~/.bashrc` or verify that export lines are in `~/.bashrc`.
+
+### Issue 2: `dpkg: error processing package...`
+* **Cause:** Interrupted package installations or missing dependencies.
+* **Fix:** Run `sudo apt-get install -f` to repair broken dependencies.
+
+### Issue 3: Driver Mismatch / Kernel Modules Not Loaded
+* **Cause:** Kernel updated without DKMS rebuilding modules.
+* **Fix:** Reboot system (`sudo reboot`) or reinstall driver packages.
+
+---
+
+## 📝 Quick Cheat Sheet (Commands Summary)
+
+```bash
+# 1. Download Repository Pinning
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2604/x86_64/cuda-ubuntu2604.pin
+sudo mv cuda-ubuntu2604.pin /etc/apt/preferences.d/cuda-repository-pin-600
+
+# 2. Download & Install Repository
+wget https://developer.download.nvidia.com/compute/cuda/13.3.1/local_installers/cuda-repo-ubuntu2604-13-3-local_13.3.1-610.43.02-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2604-13-3-local_13.3.1-610.43.02-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2604-13-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
+
+# 3. Install Toolkit
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-13-3
+
+# 4. Set PATH Permanently
+echo 'export PATH=/usr/local/cuda-13.3/bin${PATH:+:${PATH}}' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-13.3/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+source ~/.bashrc
+
+# 5. Verify
+nvcc --version
+```
+
+---
+
+## 💡 Conclusion
 
 You have successfully installed CUDA Toolkit 13.3 on Ubuntu 26.04 LTS and properly configured environment PATH variables! You are now ready to compile CUDA programs, run GPU acceleration frameworks like PyTorch and TensorFlow, or build custom C++/CUDA kernels.

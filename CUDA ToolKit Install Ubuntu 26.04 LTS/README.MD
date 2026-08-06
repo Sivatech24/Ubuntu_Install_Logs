@@ -25,7 +25,7 @@ Setting up deep learning environment frameworks, GPU acceleration, or high-perfo
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 1. [Prerequisites](#prerequisites)
 2. [Step 1: System Preparation & Update](#step-1-system-preparation--update)
 3. [Step 2: Add NVIDIA CUDA Repository & Pinning](#step-2-add-nvidia-cuda-repository--pinning)
@@ -38,7 +38,7 @@ Setting up deep learning environment frameworks, GPU acceleration, or high-perfo
 
 ---
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 Before proceeding, ensure that:
 * You have an **NVIDIA GPU** installed in your machine.
@@ -187,7 +187,7 @@ nvidia-smi
 
 ---
 
-## ❓ Troubleshooting & Common Issues
+## Troubleshooting & Common Issues
 
 ### Issue 1: `command not found: nvcc`
 * **Cause:** The `PATH` environment variable is not updated or current shell session was not reloaded.
@@ -203,7 +203,7 @@ nvidia-smi
 
 ---
 
-## 📝 Quick Cheat Sheet (Commands Summary)
+## Quick Cheat Sheet (Commands Summary)
 
 ```bash
 # 1. Download Repository Pinning
@@ -230,6 +230,6 @@ nvcc --version
 
 ---
 
-## 💡 Conclusion
+## Conclusion
 
 You have successfully installed CUDA Toolkit 13.3 on Ubuntu 26.04 LTS and properly configured environment PATH variables! You are now ready to compile CUDA programs, run GPU acceleration frameworks like PyTorch and TensorFlow, or build custom C++/CUDA kernels.
